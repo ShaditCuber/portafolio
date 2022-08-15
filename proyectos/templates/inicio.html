@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block contenido %}
+
+    {% load static %}
+
+    <header class="row bg-black">
+        <div class="col-md-4">
+            <img src="{% static 'cv/felipe.png' %}" alt="" width="400px">
+        </div>
+        <div class="col md-8 my-auto">
+            <h1>Yo soy <strong>Felipe Bastidas</strong></h1>
+            <h3>Soy Ingeniero Civil en Informatica </h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione voluptatum, est quos nesciunt magnam eos, nostrum animi tempore esse praesentium ut nemo labore quisquam rem maxime odit vero minima deserunt cupiditate excepturi ipsam porro nisi tempora! Dolor beatae dolorum iure consequuntur sit doloremque, odit quo architecto quas voluptatum reiciendis consectetur ratione ad temporibus adipisci facere esse! Sunt, perspiciatis. Obcaecati voluptas ad debitis explicabo dolorum consectetur iste est, nihil numquam illo eligendi cum quos, libero a atque iusto? Totam, fugit neque aperiam asperiores voluptatibus facere ab repellat vero, sequi obcaecati dignissimos blanditiis. Beatae porro id ex. Illum reprehenderit tempore fugiat facere?</p>
+            <a href="{% static 'cv/cv.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3">Descargar CV</a>
+        </div>
+    </header>
+
+    <div class="row my-4 text-center">
+        <h3>Mis Proyectos</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo, non!</p>
+
+            {% for i in proyectos %}
+                
+                <div class="col-md-4 p-4">
+                    <div class="card bg-black card-project">
+                        <img class="card-img-top" src="{{i.imagen.url}} " alt="{{i.titulo}}" height="300px"/>
+                        <div class="card-body">
+                            <h2>{{i.titulo}} </h2>
+                            <p>{{i.descripcion}} </p>
+
+                                {% if i.link %}
+                                    <a href="{{i.link}}" class="btn btn-light rounded-0 btn-sm" target="_blank">Ver Codigo</a>
+                                {% endif %}
+                                
+                        </div>
+                    </div>
+                </div>
+            
+            {% endfor %}
+    </div>
+
+{% endblock contenido %}
+    

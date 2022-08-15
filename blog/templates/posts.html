@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+
+<h1>Posts</h1>
+
+{% for i in posts %}
+<div class="p-3">
+    <div class="card card-body bg-black card-post">
+        <div class="row">
+            <div class="col-3">
+                <img src="{{i.imagen.url}} " alt="{{i.titulo}}" class="img-fluid">
+            </div>
+            <div class="col-9">
+                <h2>{{i.titulo}} </h2>
+                <p>{{i.cuerpo|striptags|truncatechars:100}} </p>
+                <!-- truncatechars : Corta 100 caracteres  // striptags : no interpreta etiquetas html-->
+                <p>{{i.fecha|date:'d M Y'|upper}} </p>
+
+
+                <a href="{% url 'blog:post_detail' i.id %}" class="btn btn-primary">{{i.titulo}}</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endfor %}
+
+{% endblock contenido %}
